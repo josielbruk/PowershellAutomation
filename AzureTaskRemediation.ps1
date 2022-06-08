@@ -13,7 +13,7 @@ foreach ($subscription in $subscriptionsName.Name) {
         $remediationName = "rem." + $policy.PolicyDefinitionName
         # Create the task remediation that will discover non-compliant resources before remediating
         if([string]::IsNullOrWhiteSpace($policy.PolicyDefinitionName)){
-            Start-AzPolicyRemediation -Name $remediationName -PolicyAssignmentId $policy.PolicyAssignmentId -PolicyDefinitionReferenceId -ResourceDiscoveryMode ReEvaluateCompliance
+            Start-AzPolicyRemediation -Name $remediationName -PolicyAssignmentId $policy.PolicyAssignmentId -PolicyDefinitionReferenceId $policy.PolicyDefinitionReferenceId -ResourceDiscoveryMode ReEvaluateCompliance
             Get-AzPolicyRemediation -Subscription $subscription
             Write-Output "Policy Remediation Name:"
             Write-Output $remediationName
